@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.mentordev.voluntario.domain.dto.CreateTimePossibleDTO;
 import org.mentordev.voluntario.domain.dto.CreateTimePossibleInputDTO;
 
+import org.mentordev.voluntario.domain.dto.GetHoursAvailableByDayWeekDto;
 import org.mentordev.voluntario.domain.model.TimePossible;
 import org.mentordev.voluntario.domain.model.User;
 import org.mentordev.voluntario.service.available.TimePossibleService;
@@ -38,6 +39,12 @@ public class TimePossibleController {
 
         return ResponseEntity.ok(result);
 
+    }
+
+    @GetMapping
+    public ResponseEntity listAllAvailableDayWeek(@RequestBody GetHoursAvailableByDayWeekDto getAvailableDto) {
+        var availableTime = availableService.listAllDayAvailable(getAvailableDto);
+        return ResponseEntity.ok(availableTime);
     }
 
 }

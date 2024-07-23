@@ -1,6 +1,8 @@
 package org.mentordev.voluntario.service.available;
 
+import org.mentordev.voluntario.domain.dto.GetHoursAvailableByDayWeekDto;
 import org.mentordev.voluntario.domain.dto.ListTimePossibleDTO;
+import org.mentordev.voluntario.domain.dto.TimePossibleDTO;
 import org.mentordev.voluntario.domain.model.TimePossible;
 import org.mentordev.voluntario.infra.repository.TimePossibleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,5 +52,12 @@ public class TimePossibleServiceImplement implements TimePossibleService {
                 availableCreated.getStartTime(),
                 availableCreated.getEndTime(),
                 Optional.ofNullable(availableCreated.getUser()));
+    }
+
+    @Override
+    public List<TimePossible> listAllDayAvailable(GetHoursAvailableByDayWeekDto getAvailableDto) {
+        System.out.println(getAvailableDto.dayOfWeek());
+        System.out.println(getAvailableDto.mentorId());
+        return availableTimeRepository.findAllByDayWeek(getAvailableDto.dayOfWeek(), getAvailableDto.mentorId());
     }
 }

@@ -10,7 +10,7 @@ import org.mentordev.voluntario.domain.dto.CreateTimePossibleInputDTO;
 import java.time.LocalTime;
 
 @Entity
-@Table(name="available")
+@Table(name="time_possible")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,7 +27,7 @@ public class TimePossible {
 
     private LocalTime endTime;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")
     private User user;
 
