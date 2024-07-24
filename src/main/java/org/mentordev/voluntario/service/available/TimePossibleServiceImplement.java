@@ -55,7 +55,7 @@ public class TimePossibleServiceImplement implements TimePossibleService {
     }
 
     @Override
-    public List<TimePossible> listAllDayAvailable(GetHoursAvailableByDayWeekDto getAvailableDto) {
+    public List<TimePossibleDTO> listAllDayAvailable(GetHoursAvailableByDayWeekDto getAvailableDto) {
         System.out.println(getAvailableDto.dayOfWeek());
         System.out.println(getAvailableDto.mentorId());
         return availableTimeRepository.findAllByDayWeek(getAvailableDto.dayOfWeek(), getAvailableDto.mentorId());
